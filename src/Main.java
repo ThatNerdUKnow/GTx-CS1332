@@ -1,41 +1,37 @@
 
-import Module1.ArrayList;
+import Module3.ArrayQueue;
+
+import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) {
-        ArrayList<Integer> x = new ArrayList<Integer>();
+        ArrayQueue<Integer> foo = new ArrayQueue<>();
 
-        for(int i = 0; i < 10; i++){
-            x.addToFront(i);
+        for(int i = 0;i<10;i++){
+            foo.enqueue(i);
         }
 
-        ArrayList<Integer> y = new ArrayList<>();
-        y.addToFront(0);
-        y.removeFromBack();
-        y.addToBack(0);
-        y.addToBack(1);
-        y.removeFromFront();
-        y.removeFromFront();
+        Object[] backing = foo.getBackingArray();
+        System.out.println(Arrays.toString(backing));
 
-        for(int i = 0; i < 10; i++){
-            y.addToFront(i);
-            y.addToBack(i);
+        for(int i = 0;i<=5;i++){
+            foo.dequeue();
         }
 
-        for(int i = 0; i < 10; i++){
-            y.removeFromFront();
-            y.removeFromBack();
+        backing = foo.getBackingArray();
+        System.out.println(Arrays.toString(backing));
+
+        for(int i = 10;i<24;i++){
+            foo.enqueue(i);
         }
 
-        ArrayList<Integer> z = new ArrayList<>();
+        backing = foo.getBackingArray();
+        System.out.println(Arrays.toString(backing));
 
-        for(int i = 0;i<9;i++){
-            z.addToBack(i);
-        }
+        foo.enqueue(24);
 
-        for(int i = 0; i<9; i++){
-            z.removeFromFront();
-        }
+        backing = foo.getBackingArray();
+        System.out.println(Arrays.toString(backing));
     }
 }
 
