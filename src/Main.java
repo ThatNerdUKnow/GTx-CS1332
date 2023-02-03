@@ -1,38 +1,36 @@
 
 import Module3.ArrayQueue;
+import Module5.BST;
+import Module6.MinHeap;
 
 import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) {
-        ArrayQueue<Integer> foo = new ArrayQueue<>();
+        BST<Integer> foo = new BST<>();
 
-        for(int i = 0;i<10;i++){
-            foo.enqueue(i);
+    foo.add(1);
+    foo.add(0);
+    foo.add(2);
+    foo.add(3);
+        foo.remove(1);
+        MinHeap<Integer> bar = new MinHeap<>();
+
+
+        for(Integer i = 20; i > 0;i--){
+            bar.add(i*2);
         }
 
-        Object[] backing = foo.getBackingArray();
-        System.out.println(Arrays.toString(backing));
-
-        for(int i = 0;i<=5;i++){
-            foo.dequeue();
+        while(true){
+            Integer x = bar.remove();
+            System.out.println(x);
         }
 
-        backing = foo.getBackingArray();
-        System.out.println(Arrays.toString(backing));
-
-        for(int i = 10;i<24;i++){
-            foo.enqueue(i);
-        }
-
-        backing = foo.getBackingArray();
-        System.out.println(Arrays.toString(backing));
-
-        foo.enqueue(24);
-
-        backing = foo.getBackingArray();
-        System.out.println(Arrays.toString(backing));
     }
+
+
+
+
 }
 
 
