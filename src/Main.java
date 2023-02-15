@@ -10,17 +10,12 @@ import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) {
-        AVL<Integer> AVL = new AVL<>();
-        AVLNode<Integer> A = new AVLNode<>(1);
-        AVLNode<Integer> B = new AVLNode<>(3);
-        AVLNode<Integer> C = new AVLNode<>(2);
-
-        A.setRight(B);
-        B.setLeft(C);
-
-        AVL.balance(C);
-        AVL.balance(B);
-        AVL.balance(A);
+        Integer[] foo = new Integer[]{7,4,15,1,6,10,18,0,3,5,8,13,16,19,2,9,11,14,17,12};
+        AVL<Integer> bar = new AVL<>();
+        for (Integer item:foo) {
+            bar.add(item);
+        }
+        bar.remove(7);
     }
 }
 
