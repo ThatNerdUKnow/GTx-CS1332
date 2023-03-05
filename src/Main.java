@@ -1,4 +1,6 @@
 
+import Module12.CharacterComparator;
+import Module12.PatternMatching;
 import Module3.ArrayQueue;
 import Module5.BST;
 import Module6.MinHeap;
@@ -13,29 +15,16 @@ import java.util.stream.IntStream;
 
 public class Main {
     public static void main(String[] args) {
+        CharSequence text = "AAAAAAAA";
+        CharSequence pattern = "AA";
 
-        Random rd = new Random();
-        int n = 100;
-        int[] foo = new int[n];
+        CharacterComparator comparator = new CharacterComparator();
+        List<Integer> t = PatternMatching.boyerMoore(pattern,text,comparator);
 
-        for(int i = foo.length-1; i >0; i--){
-            foo[i] = -i;
-        }
-
-        IntCompare c = new IntCompare();
-
-        Sorting.lsdRadixSort(foo);
-        for (int i : foo) {
+        for(Integer i: t){
             System.out.println(i);
         }
-    }
-}
 
-class IntCompare implements Comparator<Integer> {
-
-    @Override
-    public int compare(Integer o1, Integer o2) {
-        return o1.compareTo(o2);
     }
 }
 
