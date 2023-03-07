@@ -1,6 +1,10 @@
 
 import Module12.CharacterComparator;
 import Module12.PatternMatching;
+import Module13.Edge;
+import Module13.Graph;
+import Module13.GraphAlgorithms;
+import Module13.Vertex;
 import Module3.ArrayQueue;
 import Module5.BST;
 import Module6.MinHeap;
@@ -10,21 +14,48 @@ import Module8.AVLNode;
 //import Module10.Sorting;
 import Module11.Sorting;
 
+
 import java.util.*;
 import java.util.stream.IntStream;
 
 public class Main {
     public static void main(String[] args) {
-        CharSequence text = "AAAAAAAA";
-        CharSequence pattern = "AA";
+        HashSet<Vertex<Integer>> vertices = new HashSet<>();
+        HashSet<Edge<Integer>> edges = new HashSet<>();
 
-        CharacterComparator comparator = new CharacterComparator();
-        List<Integer> t = PatternMatching.boyerMoore(pattern,text,comparator);
-
-        for(Integer i: t){
-            System.out.println(i);
+        for (int i = 0; i < 10; i++) {
+            Vertex<Integer> v = new Vertex<>(i);
+            vertices.add(v);
         }
 
+        // generate a random number
+        Random rng = new Random(100);
+
+        for (int i = 0; i < 20; i++) {
+            Vertex<Integer> v1 = vertices.stream().skip(rng.nextInt(vertices.size())).findFirst().orElse(null);
+            Vertex<Integer> v2 = vertices.stream().skip(rng.nextInt(vertices.size())).findFirst().orElse(null);
+            Edge<Integer> e = new Edge<>(v1, v2, rng.nextInt(10));
+            edges.add(e);
+            e = new Edge<>(v2,v1, rng.nextInt(10));
+            edges.add(e);
+        }
+
+        Graph<Integer> g = new Graph<>(vertices, edges);
+
+        Vertex<Integer> start = vertices.stream().findFirst().orElse(null);
+        System.out.println("DFS");
+        List<Vertex<Integer>> l = GraphAlgorithms.dfs(start, g);
+
+        for(Vertex<Integer> v : l){
+            System.out.println(v.getData());
+        }
+
+        System.out.println("BFS");
+        l = GraphAlgorithms.bfs(start,g);
+
+        for(Vertex<Integer> v : l){
+            System.out.println(v.getData());
+        }
     }
 }
 
