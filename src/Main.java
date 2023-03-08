@@ -1,10 +1,10 @@
 
 import Module12.CharacterComparator;
 import Module12.PatternMatching;
-import Module13.Edge;
-import Module13.Graph;
-import Module13.GraphAlgorithms;
-import Module13.Vertex;
+//import Module13.Edge;
+//import Module13.Graph;
+//import Module13.GraphAlgorithms;
+//import Module13.Vertex;
 import Module3.ArrayQueue;
 import Module5.BST;
 import Module6.MinHeap;
@@ -13,6 +13,10 @@ import Module8.AVL;
 import Module8.AVLNode;
 //import Module10.Sorting;
 import Module11.Sorting;
+import Module14.Edge;
+import Module14.Vertex;
+import Module14.Graph;
+import Module14.GraphAlgorithms;
 
 
 import java.util.*;
@@ -43,19 +47,12 @@ public class Main {
         Graph<Integer> g = new Graph<>(vertices, edges);
 
         Vertex<Integer> start = vertices.stream().findFirst().orElse(null);
-        System.out.println("DFS");
-        List<Vertex<Integer>> l = GraphAlgorithms.dfs(start, g);
+        System.out.println("prims");
+        Set<Edge<Integer>> mst = GraphAlgorithms.prims(start,g);
 
-        for(Vertex<Integer> v : l){
-            System.out.println(v.getData());
-        }
-
-        System.out.println("BFS");
-        l = GraphAlgorithms.bfs(start,g);
-
-        for(Vertex<Integer> v : l){
-            System.out.println(v.getData());
-        }
+       for(Edge<Integer> e:mst){
+           System.out.println(e);
+       }
     }
 }
 
